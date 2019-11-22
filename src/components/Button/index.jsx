@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 
-const operators = ['Enter', 'Drop', 'Swap'];
+const operators = ['Enter', 'Drop', 'Swap', 'Clear'];
 
 const Button = ({ label, handleClick }) => {
   return (
