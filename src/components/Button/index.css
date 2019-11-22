@@ -2,3 +2,6 @@ button{
   border: none;
   border-radius: 0;
 }
+.operator{
+  width: 100%;
+}

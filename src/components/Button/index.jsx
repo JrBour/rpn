@@ -1,9 +1,11 @@
 import React from 'react';
 import './index.css';
 
+const operators = ['Enter', 'Drop', 'Swap'];
+
 const Button = ({ label, handleClick }) => {
   return (
-    <button onClick={() => handleClick(label)}>{label}</button>
+    <button className={operators.includes(label) ? 'operator': ''} onClick={() => handleClick(label)}>{label}</button>
   )
 }
 
