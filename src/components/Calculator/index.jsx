@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import Button from '../Button';
 import Screen from '../Screen';
+import { numbers, operatorSigns } from '../../constants';
 import './index.css';
-
-const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'];
-const operations = ['+', '-', '/', '*', '+/-'];
 
 const Calculator = () => {
   const [stack, setStack] = useState([]);
@@ -48,10 +46,6 @@ const Calculator = () => {
   }
 
   const calcul = operator => {
-    const newStack = [...stack];
-    let lastElement = newStack[newStack.length - 1];
-    let beforeLastElement = newStack[newStack.length - 2];
-
     if (operator === '+/-') {
       let newCurrentNumber = currentNumber;
       newCurrentNumber = newCurrentNumber.includes('-') ? 
@@ -63,9 +57,19 @@ const Calculator = () => {
       return;
     }
 
-    if (stack[stack.length - 2] === undefined) return;
+    if (stack[stack.length - 2] === undefined && currentNumber === '') return;
 
+    const newStack = [...stack];
+    let lastElement = newStack[newStack.length - 1];
+    let beforeLastElement = currentNumber !== '' ? currentNumber : newStack[newStack.length - 2];
     newStack[newStack.length - 1] = operators[operator](parseFloat(beforeLastElement),parseFloat(lastElement)).toString();
+    
+    if (currentNumber !== '') {
+      setCurrentNumber('');
+      setStack(newStack);
+      return;
+    }
+    
     newStack.splice(newStack.length - 2, 1);
     setStack(newStack);
   }
@@ -80,9 +84,10 @@ const Calculator = () => {
       <div className="buttons">
         <div className="numbers">
           {numbers.map(number => <Button key={number} handleClick={addNumber} label={number} />)}
+          <Button handleClick={calcul} label="+/-" />
         </div>
         <div className="operators">
-          {operations.map(operation => <Button key={operation} handleClick={calcul} label={operation} />)}
+          {operatorSigns.map(operator => <Button key={operator} handleClick={calcul} label={operator} />)}
         </div>
       </div>
       <div className="actions">

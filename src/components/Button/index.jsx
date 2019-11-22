@@ -1,11 +1,20 @@
 import React from 'react';
 import './index.css';
-
-const operators = ['Enter', 'Drop', 'Swap', 'Clear'];
+import { actions, operatorSigns } from '../../constants';
 
 const Button = ({ label, handleClick }) => {
+  const getClass = label => {
+    if (actions.includes(label)) {
+      return 'action';
+    } else if(operatorSigns.includes(label)) {
+      return 'operator';
+    } else {
+      return 'number';
+    }
+  }
+
   return (
-    <button className={operators.includes(label) ? 'operator': ''} onClick={() => handleClick(label)}>{label}</button>
+    <button className={getClass(label)} onClick={() => handleClick(label)}>{label}</button>
   )
 }
 

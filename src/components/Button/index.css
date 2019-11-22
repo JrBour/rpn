@@ -1,7 +1,16 @@
 button{
-  border: none;
+  border: 1px solid white;
   border-radius: 0;
+  padding: 5px;
 }
+.action{
+  width: 100%;
+}
+
 .operator{
   width: 100%;
+}
+
+.number{
+  width: calc(100%/3);
 }
