@@ -1,0 +1,17 @@
+.calculator {
+  width: 20%;
+  margin:auto;
+}
+.buttons {
+  display: flex;
+  width: 100%;
+}
+.numbers{
+  width: 75%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.operations{
+  width: 25%;
+}
