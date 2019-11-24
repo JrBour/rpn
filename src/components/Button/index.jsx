@@ -13,9 +13,7 @@ const Button = ({ label, handleClick }) => {
     }
   }
 
-  return (
-    <button className={getClass(label)} onClick={() => handleClick(label)}>{label}</button>
-  )
+  return <button className={getClass(label)} onClick={() => handleClick(label)}>{label}</button>
 }
 
 export default Button;
